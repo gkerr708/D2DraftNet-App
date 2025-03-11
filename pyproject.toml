@@ -1,20 +1,18 @@
-[project]
+[tool.poetry]
 name = "d2draftnet-app"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "gkerr708",email = "gkerr708@gmail.com"}
-]
+authors = ["gkerr708 <gkerr708@gmail.com>"]
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "flask (>=3.1.0,<4.0.0)",
-    "requests (>=2.32.3,<3.0.0)",
-    "beautifulsoup4 (>=4.13.3,<5.0.0)",
-    "pandas (>=2.2.3,<3.0.0)",
-    "torch (>=2.6.0,<3.0.0)"
-]
 
+[tool.poetry.dependencies]
+python = ">=3.10"
+flask = ">=3.1.0,<4.0.0"
+requests = ">=2.32.3,<3.0.0"
+beautifulsoup4 = ">=4.13.3,<5.0.0"
+pandas = ">=2.2.3,<3.0.0"
+torch = ">=2.6.0,<3.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
