@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #1db954;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #17a44d;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.hero-button {
+    border: 3px solid transparent;
+    background: none;
+    cursor: pointer;
+    padding: 3px;
+    text-align: center;
+    transition: border 0.2s ease-in-out;
+}
+
+.hero-button img {
+    width: 110px;
+    height: 80px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.hero-button:hover img {
+    transform: scale(1.1);
+}
+
+.hero-button.radiant {
+    border-color: #1db954; /* Green for Radiant */
+}
+
+.hero-button.dire {
+    border-color: #e63946; /* Red for Dire */
+}
+
+
+

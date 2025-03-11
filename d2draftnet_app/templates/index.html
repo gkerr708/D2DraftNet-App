@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2DraftNet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>D2DraftNet Draft Selector</h1>
+    
+    <h2>Select Radiant and Dire Drafts</h2>
+    <div class="hero-grid">
+        {% for hero in heroes %}
+        <button class="hero-button" onclick="selectHero(this, '{{ hero }}')" data-hero="{{ hero }}">
+            <img src="{{ url_for('static', filename='hero_icons/' + hero + '_icon_dota2_gameasset.png') }}" alt="{{ hero }}">
+            <p>{{ hero.replace('_', ' ') }}</p>
+        </button>
+        {% endfor %}
+    </div>
+
+    <h2>Radiant Draft</h2>
+    <div id="radiant-draft"></div>
+
+    <h2>Dire Draft</h2>
+    <div id="dire-draft"></div>
+
+    <h2>Prediction Result</h2>
+    <div id="prediction-result"></div>
+
+    <!-- ✅ Fix: Add Form to Send Data -->
+    <form id="draft-form">
+        <input type="hidden" name="radiant_draft" id="radiant_draft_input">
+        <input type="hidden" name="dire_draft" id="dire_draft_input">
+        <button type="submit">Get Prediction</button>
+    </form>
+
+    <script>
+        document.getElementById("draft-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+        
+            let formData = new FormData(this);
+        
+            fetch("/predict", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("prediction-result").innerText = data.message;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+
+        let radiantDraft = [];
+        let direDraft = [];
+
+        function selectHero(button, hero) {
+            if (radiantDraft.includes(hero)) {
+                // Hero already in Radiant → Move to Dire
+                radiantDraft = radiantDraft.filter(h => h !== hero);
+                direDraft.push(hero);
+                button.classList.remove("radiant");
+                button.classList.add("dire");
+            } else if (direDraft.includes(hero)) {
+                // Hero already in Dire → Remove it
+                direDraft = direDraft.filter(h => h !== hero);
+                button.classList.remove("dire");
+            } else {
+                // Hero not picked → Add to Radiant
+                if (radiantDraft.length < 5) {
+                    radiantDraft.push(hero);
+                    button.classList.add("radiant");
+                }
+            }
+
+            updateDraftDisplay();
+        }
+
+        function updateDraftDisplay() {
+            document.getElementById("radiant-draft").innerText = "Radiant: " + radiantDraft.join(', ');
+            document.getElementById("dire-draft").innerText = "Dire: " + direDraft.join(', ');
+            document.getElementById("radiant_draft_input").value = radiantDraft.join(',');
+            document.getElementById("dire_draft_input").value = direDraft.join(',');
+        }
+    </script>
+</body>
+</html>
