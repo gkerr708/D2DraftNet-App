@@ -3,7 +3,6 @@ from pathlib import Path
 current_patch = "7_37e"
 
 PROJECT_DIR = Path(__file__).parent.parent
-MODEL_PATH = PROJECT_DIR / "models" / f"{current_patch}_model.pth"
 
 # Define the list of heroes
 HEROS_unsorted = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', 'Drow Ranger', 'Earthshaker', 'Juggernaut', 'Mirana', 'Morphling', 'Shadow Fiend', 
@@ -20,21 +19,20 @@ HEROS_unsorted = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', '
          'Marci', 'Primal Beast', 'Muerta', 'Kez']
 
 # Map hero names to indices
-HERO_MAP = {hero: i + 1 for i, hero in enumerate(HEROS_unsorted)}
+#HERO_MAP = {hero: i + 1 for i, hero in enumerate(HEROS_unsorted)}
 
 HEROS_sorted = sorted(HEROS_unsorted)
 HEROS_uscore = [hero.replace(" ", "_").lower() for hero in HEROS_sorted]
 HEROS = [hero.replace("nature's_prophet", "natures_prophet").lower() for hero in HEROS_uscore]
-DIRE_HEROS = sorted(["Dire_" + hero for hero in HEROS])
-RADIANT_HEROS = sorted(["Radiant_" + hero for hero in HEROS])
-
-NUM_HEROS= len(HERO_MAP) + 1  # Ensure consistency with training
-LAYERS = [32, 16]  # Layers for the current model (7.37e)
-EMBEDDING_DIM = 3  # Embedding dimension for the current model (7.37e)
+#DIRE_HEROS = sorted(["Dire_" + hero for hero in HEROS])
+#RADIANT_HEROS = sorted(["Radiant_" + hero for hero in HEROS])
+#
+#NUM_HEROS= len(HERO_MAP) + 1  # Ensure consistency with training
+#LAYERS = [32, 16]  # Layers for the current model (7.37e)
+#EMBEDDING_DIM = 3  # Embedding dimension for the current model (7.37e)
 
 
 
 if __name__ == "__main__":
     #print(HEROS)
     print(PROJECT_DIR.exists())
-    print(MODEL_PATH.exists())
