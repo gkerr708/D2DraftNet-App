@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify
 from d2draftnet_app.config import HEROS
-from d2draftnet_app.DNN_model import predict_match_outcome
+from d2draftnet_app.load_model import predict_match_outcome
+
 
 main = Blueprint("main", __name__)
 

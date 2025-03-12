@@ -6,7 +6,7 @@ PROJECT_DIR = Path(__file__).parent.parent
 MODEL_PATH = PROJECT_DIR / "models" / f"{current_patch}_model.pth"
 
 # Define the list of heroes
-HEROS_ = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', 'Drow Ranger', 'Earthshaker', 'Juggernaut', 'Mirana', 'Morphling', 'Shadow Fiend', 
+HEROS_unsorted = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', 'Drow Ranger', 'Earthshaker', 'Juggernaut', 'Mirana', 'Morphling', 'Shadow Fiend', 
          'Phantom Lancer', 'Puck', 'Pudge', 'Razor', 'Sand King', 'Storm Spirit', 'Sven', 'Tiny', 'Vengeful Spirit', 'Windranger', 'Zeus', 'Kunkka', 'Lina', 
          'Lion', 'Shadow Shaman', 'Slardar', 'Tidehunter', 'Witch Doctor', 'Lich', 'Riki', 'Enigma', 'Tinker', 'Sniper', 'Necrophos', 'Warlock', 'Beastmaster', 
          'Queen of Pain', 'Venomancer', 'Faceless Void', 'Wraith King', 'Death Prophet', 'Phantom Assassin', 'Pugna', 'Templar Assassin', 'Viper', 'Luna', 
@@ -18,9 +18,19 @@ HEROS_ = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', 'Drow Ran
          'Elder Titan', 'Legion Commander', 'Techies', 'Ember Spirit', 'Earth Spirit', 'Underlord', 'Terrorblade', 'Phoenix', 'Oracle', 'Winter Wyvern', 
          'Arc Warden', 'Monkey King', 'Dark Willow', 'Pangolier', 'Grimstroke', 'Hoodwink', 'Void Spirit', 'Snapfire', 'Mars', 'Ringmaster', 'Dawnbreaker', 
          'Marci', 'Primal Beast', 'Muerta', 'Kez']
-HEROS_ = sorted(HEROS_)
-HEROS_ = [hero.replace(" ", "_").lower() for hero in HEROS_]
-HEROS = [hero.replace("nature's_prophet", "natures_prophet").lower() for hero in HEROS_]
+
+# Map hero names to indices
+HERO_MAP = {hero: i + 1 for i, hero in enumerate(HEROS_unsorted)}
+
+HEROS_sorted = sorted(HEROS_unsorted)
+HEROS_uscore = [hero.replace(" ", "_").lower() for hero in HEROS_sorted]
+HEROS = [hero.replace("nature's_prophet", "natures_prophet").lower() for hero in HEROS_uscore]
+DIRE_HEROS = sorted(["Dire_" + hero for hero in HEROS])
+RADIANT_HEROS = sorted(["Radiant_" + hero for hero in HEROS])
+
+NUM_HEROS= len(HERO_MAP) + 1  # Ensure consistency with training
+LAYERS = [32, 16]  # Layers for the current model (7.37e)
+EMBEDDING_DIM = 3  # Embedding dimension for the current model (7.37e)
 
 
 
