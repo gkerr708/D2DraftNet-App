@@ -22,8 +22,9 @@ HEROS_unsorted = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', '
 #HERO_MAP = {hero: i + 1 for i, hero in enumerate(HEROS_unsorted)}
 
 HEROS_sorted = sorted(HEROS_unsorted)
-HEROS_uscore = [hero.replace(" ", "_").lower() for hero in HEROS_sorted]
-HEROS = [hero.replace("nature's_prophet", "natures_prophet").lower() for hero in HEROS_uscore]
+HEROS_uscore = [hero.replace(" ", "_") for hero in HEROS_sorted]
+HEROS = [hero.replace("'", "") for hero in HEROS_uscore]
+#HEROS = [hero.replace("Nature's_Prophet", "natures_prophet").lower() for hero in HEROS_uscore]
 #DIRE_HEROS = sorted(["Dire_" + hero for hero in HEROS])
 #RADIANT_HEROS = sorted(["Radiant_" + hero for hero in HEROS])
 #
