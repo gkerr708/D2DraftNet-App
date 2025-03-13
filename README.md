@@ -9,6 +9,29 @@ D2DraftNet is a deep-learning-based Dota 2 draft prediction tool. It analyzes he
 
 ---
 
+## **💻 How to Update the Model**
+**D2DraftNet** is a deep learning model for predicting Dota 2 draft outcomes which is used in the web app.
+The package can be found at [PyPI](https://pypi.org/project/d2draftnet/).
+If there is a newer version available on PyPI, add it to the **D2DraftNet App** by running the following commands:
+
+Remove the old version
+```sh
+poetry remove d2draftnet
+```
+Clear the cache.
+```sh
+poetry cache clear
+```
+Install the new version.
+```sh
+poetry add d2draftnet@latest
+```
+Verify the version matches the latest release on PyPI.
+```sh
+poetry show d2draftnet
+```
+---
+
 ## **📦 Dependencies**
 D2DraftNet requires the following dependencies, which are managed using [Poetry](https://python-poetry.org/):
 
