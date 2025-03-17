@@ -24,16 +24,6 @@ HEROS_unsorted = ['Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', '
 HEROS_sorted = sorted(HEROS_unsorted)
 HEROS_uscore = [hero.replace(" ", "_") for hero in HEROS_sorted]
 HEROS = [hero.replace("'", "") for hero in HEROS_uscore]
-#HEROS = [hero.replace("Nature's_Prophet", "natures_prophet").lower() for hero in HEROS_uscore]
-#DIRE_HEROS = sorted(["Dire_" + hero for hero in HEROS])
-#RADIANT_HEROS = sorted(["Radiant_" + hero for hero in HEROS])
-#
-#NUM_HEROS= len(HERO_MAP) + 1  # Ensure consistency with training
-#LAYERS = [32, 16]  # Layers for the current model (7.37e)
-#EMBEDDING_DIM = 3  # Embedding dimension for the current model (7.37e)
-
-
 
 if __name__ == "__main__":
-    #print(HEROS)
-    print(PROJECT_DIR.exists())
+    print(PROJECT_DIR)
